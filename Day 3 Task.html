@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // task 1 ex
+      //     let obj1={name:"person1",age:5};
+      //     let obj2={age:5,name:"person1"};
+      //     // step 1 convert the json into the obj
+      //     var cobj1= JSON.stringify(obj1);
+      //     var cobj2= JSON.stringify(obj2);
+
+      //     console.log(cobj1);
+      //     console.log(cobj2);
+      //     //step 2 compare valus
+      //    console.log(cobj1==cobj2);
+
+      // task 2 and 3   API url and display all country flags
+      var req = new XMLHttpRequest();
+      console.log(req);
+      req.open("GET", "https://restcountries.com/v3.1/all");
+      req.send();
+      req.onload = function () {
+        var data = JSON.parse(req.response);
+        console.log(data);
+        console.log(data[0].flag);
+
+        for (var key in data) {
+          console.log(data[key].flag);
+          console.log(data[key].name);
+          console.log(data[key].region);
+          console.log(data[key].subregion);
+          console.log(data[key].population);
+        }
+      };
+    </script>
+  </body>
+</html>
