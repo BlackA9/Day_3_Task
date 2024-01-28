@@ -7,19 +7,30 @@
   </head>
   <body>
     <script>
-      // task 1 How to compare two JSON have the same properties without order
-      //     let obj1={name:"person1",age:5};
-      //     let obj2={age:5,name:"person1"};
-      //     // step 1 convert the json into the obj
-      //     var cobj1= JSON.stringify(obj1);
-      //     var cobj2= JSON.stringify(obj2);
+      // // task 1 How to compare two JSON have the same properties without order
+      let obj1 = { name: "person1", age: 5 };
+      let obj2 = { name: "person1", age: 5 };
+      // {age:5,name:"person1"}
+      var keysarr1 = Object.keys(obj1);
+      console.log(keysarr1);
+      var keysarr2 = Object.keys(obj2);
+      console.log(keysarr2);
+      var ismatch = true;
+      if (keysarr1.length == keysarr2.length) {
+        for (let key in obj1) {
+          if (obj1[key] == obj2[key]) {
+            continue;
+          } else {
+            ismatch = false;
+            break;
+          }
+        }
+      } else {
+        ismatch = false;
+      }
+      console.log(ismatch);
 
-      //     console.log(cobj1);
-      //     console.log(cobj2);
-      //     //step 2 compare valus
-      //    console.log(cobj1==cobj2);
-
-      // task 2 and 3   API url and display all country flags
+      // // task 2 and 3   API url and display all country flags
       var req = new XMLHttpRequest();
       console.log(req);
       req.open("GET", "https://restcountries.com/v3.1/all");
@@ -36,6 +47,11 @@
           console.log(data[key].subregion);
           console.log(data[key].population);
         }
+        // for (var i=0;i<data.length;i++){
+        //   console.log(i);
+        //   console.log(data[i]);
+        //   console.log(data[i].flag)
+        // }
       };
     </script>
   </body>
